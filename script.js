@@ -10,6 +10,7 @@ let elapsed = 0;
 let duration = 10;
 let running = false;
 
+
 slider.addEventListener("input", () => {
   duration = Number(slider.value);
   durationLabel.textContent = duration;
@@ -20,15 +21,21 @@ slider.addEventListener("input", () => {
 resetBtn.addEventListener("click", () => {
   elapsed = 0;
   running = false;
+  startBtn.textContent = "Start";
   updateUI();
 });
 
-
 startBtn.addEventListener("click", () => {
-  if (elapsed >= duration) elapsed = 0; // restart if finished
-  running = true;
+  if (!running) {
+    if (elapsed >= duration) elapsed = 0;
+    running = true;
+    startBtn.innerHTML ="Stop";
+  } 
+  else {
+    running = false;
+    startBtn.innerHTML ="Start";
+  }
 });
-
 function updateUI() {
   elapsedLabel.textContent = elapsed.toFixed(1);
   let percent = Math.min((elapsed / duration) * 100, 100);
@@ -41,7 +48,11 @@ setInterval(() => {
     if (elapsed >= duration) {
       elapsed = duration;
       running = false;
+      startBtn.innerHTML ="Start";
+
     }
     updateUI();
   }
 }, 100);
+
+
