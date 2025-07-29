@@ -1,0 +1,86 @@
+body {
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .timer-box {
+    background: #e67e22;
+    width: 90%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: #000000;
+    text-align: center;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #2c3e50;
+  }
+  
+  .progress-container {
+    background: #e9e9e9;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 25px;
+    margin-bottom: 15px;
+  }
+  
+  .progress-bar {
+    background: #0b91e9;
+    height: 100%;
+    width: 0%;
+    transition: width 0.2s;
+  }
+  
+  .label {
+    margin: 12px 0;
+    font-size: 20px;
+    color: #2c3e50;
+    font-weight: bold;
+  }
+  
+  input[type="range"] {
+    width: 100%;
+    margin: 25px 0;
+  }
+  
+  button {
+    background: #1687d2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 10px;
+    min-width: 100px;
+  }
+  button:hover {
+    background: #0d66a2;
+  }
+  
+
+
+  @media (max-width: 480px) {
+    .timer-box {
+      padding: 20px;
+      max-width: 95%;
+    }
+    h2 {
+      font-size: 22px;
+    }
+    .label {
+      font-size: 18px;
+    }
+    button {
+      font-size: 14px;
+      padding: 10px 16px;
+    }
+  }
+  

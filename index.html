@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+    const obj = {
+        name : "Raj",
+        age : 25
+    };
+    const {name, age} = obj;
+    console.log(name, age);
+    console.log("---------------");
+
+    var a,b;
+    const sum = (a, b) => a+b;
+    console.log(sum(5, 7)); 
+    console.log("---------------");
+
+    const arr=["red","blue","green"];
+    const [f,s,d]=arr;
+    console.log(f,d);
+
+    console.log("---------------");
+
+        const arr2=[...arr,"white","black"]
+        console.log(arr2);
+
+
+        console.log("--------11111-------");
+
+        const af = [ "apple", "banana", "cherry" ];
+for (const fruit of af) {
+    console.log(fruit);
+    let check = af.includes("black");
+console.log(` result : ${check}
+`);
+
+    console.log("--___---____-------------");
+    const map = new Map();
+    map.set("abc", "yousef");
+    map.set("b", 2);
+    console.log(map.get("abc"));
+    
+
+
+    console.log("--___---____-------------");
+
+    function greet(name = "Shbeeb") { return `
+        Hello, ${name}
+        !
+        @
+        @
+        `; }
+console.log(greet());
+
+
+
+const poem = ` #####
+Roses are red,
+Violets are blue,
+JavaScript is awesome,
+And so are you!`;
+console.log(poem);
+
+
+    const fetch = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => resolve("Data fetched"), 2000);
+    });
+};
+
+
+
+fetch().then(data => console.log(data));
+
+}
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
