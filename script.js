@@ -12,9 +12,19 @@ let running = false;
 
 let timerId = null;
 
+
 slider.addEventListener("input", () => {
     duration = Number(slider.value);
     durationLabel.textContent = duration;
+  
+    if (elapsed >= duration) 
+      elapsed = 0;
+    
+    if (!running) {
+      running = true;
+      startBtn.textContent = "Stop";
+      timerId = setInterval(updateTimer, 100);
+    }
     updateUI();
   });
   
