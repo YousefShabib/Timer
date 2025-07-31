@@ -32,7 +32,8 @@ slider.addEventListener("input", () => {
       running = true;
       startBtn.textContent = "Stop";
       timerId = setInterval(updateTimer, 100); // ⬅️   بس اكبس نشغل العداد
-    } else {
+    } 
+    else {
       running = false;
       startBtn.textContent = "Start";
       clearInterval(timerId); // ⬅️ لما اكبس  Stop يوقف العداد فورًا.
@@ -41,6 +42,7 @@ slider.addEventListener("input", () => {
   });
   
   function updateTimer() {
+    console.log("hi");
     if (running) {
       elapsed += 0.1;
       if (elapsed >= duration) {
