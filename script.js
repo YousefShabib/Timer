@@ -60,6 +60,3 @@ slider.addEventListener("input", () => {
   }
 
 
-  git add .
-  git commit -m "timer loop new edit"
-  git push origin timer_v1
