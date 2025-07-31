@@ -10,49 +10,56 @@ let elapsed = 0;
 let duration = 10;
 let running = false;
 
+let timerId = null;
 
 slider.addEventListener("input", () => {
-  duration = Number(slider.value);
-  durationLabel.textContent = duration;
-  if (elapsed < duration && running) running = true;
-  updateUI();
-});
-
-resetBtn.addEventListener("click", () => {
-  elapsed = 0;
-  running = false;
-  startBtn.textContent = "Start";
-  updateUI();
-});
-
-startBtn.addEventListener("click", () => {
-  if (!running) {
-    if (elapsed >= duration) elapsed = 0;
-    running = true;
-    startBtn.innerHTML ="Stop";
-  } 
-  else {
+    duration = Number(slider.value);
+    durationLabel.textContent = duration;
+    updateUI();
+  });
+  
+  resetBtn.addEventListener("click", () => {
+    elapsed = 0;
     running = false;
-    startBtn.innerHTML ="Start";
-  }
-});
-function updateUI() {
-  elapsedLabel.textContent = elapsed.toFixed(1);
-  let percent = Math.min((elapsed / duration) * 100, 100);
-  progress.style.width = percent + "%";
-}
-
-setInterval(() => {
-  if (running) {
-    elapsed += 0.1;
-    if (elapsed >= duration) {
-      elapsed = duration;
+    clearInterval(timerId);   // ⬅️ لو كان العداد شغال يوقف العداد بس تكبس reset
+    startBtn.textContent = "Start";
+    updateUI();
+  });
+  
+  startBtn.addEventListener("click", () => {
+    if (!running) {
+      if (elapsed >= duration) elapsed = 0;
+      running = true;
+      startBtn.textContent = "Stop";
+      timerId = setInterval(updateTimer, 100); // ⬅️   بس اكبس نشغل العداد
+    } else {
       running = false;
-      startBtn.innerHTML ="Start";
+      startBtn.textContent = "Start";
+      clearInterval(timerId); // ⬅️ لما اكبس  Stop يوقف العداد فورًا.
 
     }
-    updateUI();
+  });
+  
+  function updateTimer() {
+    if (running) {
+      elapsed += 0.1;
+      if (elapsed >= duration) {
+        elapsed = duration;
+        running = false;
+        startBtn.textContent = "Start";
+        clearInterval(timerId); // ⬅️ بس يخلص الوقت العداد بوقف لحاله و ما بستدعيه
+      }
+      updateUI();
+    }
   }
-}, 100);
+  
+  function updateUI() {
+    elapsedLabel.textContent = elapsed.toFixed(1);
+    let percent = Math.min((elapsed / duration) * 100, 100);
+    progress.style.width = percent + "%";
+  }
 
 
+  git add .
+  git commit -m "timer loop new edit"
+  git push origin timer_v1
